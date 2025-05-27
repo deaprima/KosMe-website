@@ -1,117 +1,209 @@
-# Kosme
+# 🏠 KosMe, Choose Me!
 
-Platform Manajemen Kos Modern berbasis Web
+<div align="center">
+  <h3>Platform Manajemen Kos Modern berbasis Website</h3>
+  <p>Solusi Terpadu untuk Pengelolaan Kos yang Efisien</p>
+</div>
 
-## Tentang Kosme
+## 📋 Tentang KosMe
 
-Kosme adalah platform manajemen kos modern yang dirancang untuk memudahkan pengelolaan properti kos. Dibangun dengan teknologi terkini, Kosme menyediakan solusi komprehensif untuk pemilik kos dan penghuni dalam mengelola transaksi, pembayaran, dan komunikasi.
+KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan pengelolaan properti kos. Dibangun dengan teknologi terkini, Kosme menyediakan solusi komprehensif untuk pemilik kos dan penghuni dalam mengelola transaksi, pembayaran, dan komunikasi.
 
-### Fitur Utama
+### ✨ Fitur Utama
 
-#### Untuk Pemilik Kos
+#### 👨‍💼 Admin (http://localhost:8000/admin)
 
--   📊 Dashboard analitik untuk monitoring pendapatan dan okupansi
--   👥 Manajemen penghuni kos yang terintegrasi
--   💰 Sistem pembayaran dan tagihan otomatis
+-   📊 Dashboard analitik untuk monitoring seluruh kos
+-   👥 Manajemen User
+-   📈 Laporan keuangan keseluruhan
+-   ⚙️ Konfigurasi sistem
+-   🔐 Manajemen role dan permission
+-   📝 Verifikasi kos dan pemilik
+-   📊 Statistik dan analitik platform
+
+#### 👨‍💻 Owner (http://localhost:8000/owner)
+
+-   📊 Dashboard analitik untuk monitoring kos sendiri
+-   👥 Manajemen penghuni kos
+-   💰 Sistem pembayaran
 -   📝 Pencatatan pemeliharaan dan perbaikan
--   📱 Notifikasi real-time untuk pembayaran dan masalah
--   📈 Laporan keuangan dan statistik
+-   📈 Laporan keuangan kos
+-   🏠 Manajemen kamar dan fasilitas
 
-#### Untuk Penghuni Kos
+#### 👤 User/Penghuni (http://localhost:8000)
 
 -   📱 Aplikasi mobile-friendly untuk akses mudah
 -   💳 Pembayaran online yang aman
--   📢 Sistem pengaduan dan komunikasi
--   📅 Jadwal pembayaran dan riwayat transaksi
--   🔔 Notifikasi pembayaran dan pengumuman
+-   📅 Riwayat transaksi dan pembayaran
+-   🏠 Informasi kamar dan fasilitas
+-   👥 Profil dan pengaturan akun
+-   📊 Status pembayaran dan tagihan
 
-### Teknologi yang Digunakan
+### 🛠️ Teknologi yang Digunakan
 
 -   **Backend**: Laravel 12 - Framework PHP modern untuk performa tinggi
 -   **Admin Panel**: Filament 3 - Panel admin yang elegan dan mudah digunakan
 -   **Frontend**:
     -   Tailwind CSS - Framework CSS modern untuk desain responsif
     -   Alpine.js - Library JavaScript ringan untuk interaktivitas
--   **Database**: SQLite (dapat dikonfigurasi ke MySQL/PostgreSQL)
+-   **Database**: MySQL
 -   **Testing**: Pest PHP - Framework testing modern
 
-## Persyaratan Sistem
+## ⚙️ Persyaratan Sistem
 
--   PHP 8.2 atau lebih tinggi
--   Node.js dan NPM
--   Composer
--   SQLite (atau database lain yang didukung)
--   Web server (Apache/Nginx)
+-   🐘 PHP 8.2 atau lebih tinggi
+-   📦 Node.js dan NPM
+-   🎵 Composer
+-   💾 MySql (atau database lain yang didukung)
+-   🌐 Web server (Apache/Nginx)
 
-## Panduan Instalasi
+## 🚀 Panduan Instalasi
 
-1. Clone repository:
+### 1️⃣ Persiapan Awal
+
+1. Pastikan semua persyaratan sistem terpenuhi:
+
+```bash
+# Cek versi PHP
+php -v
+
+# Cek versi Node.js
+node -v
+
+# Cek versi Composer
+composer -V
+```
+
+2. Clone repository:
 
 ```bash
 git clone [repository-url]
-cd kosme
 ```
 
-2. Install dependensi PHP:
+### 2️⃣ Instalasi Dependensi
+
+1. Install dependensi PHP:
 
 ```bash
 composer install
 ```
 
-3. Install dependensi Node.js:
+2. Install dependensi Node.js:
 
 ```bash
 npm install
 ```
 
-4. Siapkan environment:
+### 3️⃣ Konfigurasi Aplikasi
+
+1. Siapkan environment:
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-5. Konfigurasi database di file `.env`:
+2. Konfigurasi database di file `.env`:
 
 ```env
+# Konfigurasi Database
 DB_CONNECTION=sqlite
 # atau
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=kosme
+DB_DATABASE=kosme_database
 DB_USERNAME=root
 DB_PASSWORD=
+
+# Konfigurasi Aplikasi
+APP_NAME=Kosme
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
 ```
 
-6. Jalankan migrasi dan seeder:
+### 4️⃣ Setup Database
+
+1. Jalankan migrasi dan seeder:
 
 ```bash
 php artisan migrate --seed
 ```
 
-7. Jalankan server development:
+Setelah menjalankan seeder, Anda dapat login dengan kredensial berikut:
+
+#### Admin
+
+-   Email: admin@example.com
+-   Password: password
+-   URL: http://localhost:8000/admin
+
+#### Owner
+
+-   Email: owner@example.com
+-   Password: password
+-   URL: http://localhost:8000/owner
+
+#### User
+
+-   Email: user@example.com
+-   Password: password
+-   URL: http://localhost:8000
+
+### 5️⃣ Menjalankan Aplikasi
+
+#### Development
+
+Untuk menjalankan aplikasi dalam mode development:
 
 ```bash
 composer dev
 ```
 
-Server akan menjalankan:
+Perintah ini akan menjalankan:
 
--   Server Laravel (http://localhost:8000)
--   Server Vite untuk asset
--   Queue worker untuk proses background
+-   🌐 Server Laravel (http://localhost:8000)
+-   🎨 Server Vite untuk asset
+-   ⚡ Queue worker untuk proses background
 
-## Pengembangan
+#### Production
 
-### Perintah Umum
+Untuk menjalankan aplikasi dalam mode production:
 
--   Jalankan tes: `composer test`
--   Build aset: `npm run build`
--   Jalankan linter: `composer lint`
--   Jalankan formatter: `composer format`
+1. Build aset frontend:
 
-### Struktur Proyek
+```bash
+npm run build
+```
+
+2. Optimize Laravel:
+
+```bash
+php artisan optimize
+```
+
+3. Jalankan server:
+
+```bash
+php artisan serve
+```
+
+Akses aplikasi:
+
+-   Panel Admin: http://localhost:8000/admin
+-   Aplikasi: http://localhost:8000
+
+## 💻 Pengembangan
+
+### 🔧 Perintah Umum
+
+-   🧪 Jalankan tes: `composer test`
+-   📦 Build aset: `npm run build`
+-   🔍 Jalankan linter: `composer lint`
+-   ✨ Jalankan formatter: `composer format`
+
+### 📁 Struktur Proyek
 
 ```
 kosme/
@@ -124,18 +216,13 @@ kosme/
 └── vendor/           # Dependensi PHP
 ```
 
-## Kontribusi
-
-Kami menerima kontribusi untuk pengembangan Kosme. Silakan buat pull request atau buka issue untuk diskusi lebih lanjut.
-
-## Lisensi
-
-Kosme adalah perangkat lunak open source yang dilisensikan di bawah [MIT License](LICENSE.md).
-
-## Dukungan
+## 🆘 Dukungan
 
 Untuk bantuan dan dukungan, silakan:
 
--   Buka issue di repository
--   Hubungi tim pengembang di [email@kosme.com]
--   Kunjungi dokumentasi di [docs.kosme.com]
+-   📝 Buka issue di repository
+-   📧 Hubungi tim pengembang di [deaprima209@gmail.com]
+
+## 🎉 Selamat Menggunakan Kosme!
+
+Jika Anda menemukan bug atau memiliki saran, jangan ragu untuk membuka issue di repository kami. Terima kasih telah menggunakan KosMe! 🙏
