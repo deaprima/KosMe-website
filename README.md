@@ -139,18 +139,6 @@ Setelah menjalankan seeder, Anda dapat login dengan kredensial berikut:
 -   Password: password
 -   URL: http://localhost:8000/admin
 
-#### Owner
-
--   Email: owner@example.com
--   Password: password
--   URL: http://localhost:8000/owner
-
-#### User
-
--   Email: user@example.com
--   Password: password
--   URL: http://localhost:8000
-
 ### 5️⃣ Menjalankan Aplikasi
 
 #### Development
