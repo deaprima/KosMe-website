@@ -12,6 +12,18 @@
     --dark: #1E293B;        /* Slate Gray */
 }
 
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Heebo:wght@300;400;500;600&display=swap');
+
+/* Base Styles */
+body {
+    font-family: 'Heebo', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Inter', sans-serif;
+}
+
 /* Override Bootstrap Colors */
 .text-primary { color: var(--primary) !important; }
 .text-secondary { color: var(--secondary) !important; }
