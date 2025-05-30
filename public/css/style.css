@@ -1,9 +1,75 @@
-/********** Template CSS **********/
-:root {
+/* :root {
     --primary: #00B98E;
     --secondary: #FF6922;
     --light: #EFFDF5;
     --dark: #0E2E50;
+} */
+
+:root {
+    --primary: #2563EB;     /* Indigo Blue */
+    --secondary: #F59E0B;   /* Soft Amber */
+    --light: #F9FAFB;       /* Snow White */
+    --dark: #1E293B;        /* Slate Gray */
+}
+
+/* Override Bootstrap Colors */
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-light { color: var(--light) !important; }
+.text-dark { color: var(--dark) !important; }
+
+.bg-primary { background-color: var(--primary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+.bg-light { background-color: var(--light) !important; }
+.bg-dark { background-color: var(--dark) !important; }
+
+.border-primary { border-color: var(--primary) !important; }
+.border-secondary { border-color: var(--secondary) !important; }
+.border-light { border-color: var(--light) !important; }
+.border-dark { border-color: var(--dark) !important; }
+
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--light) !important;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary) !important;
+    border-color: var(--secondary) !important;
+    color: var(--light) !important;
+}
+
+.btn-secondary:hover {
+    background-color: #d97706 !important;
+    border-color: #d97706 !important;
+}
+
+.btn-light {
+    background-color: var(--light) !important;
+    border-color: var(--light) !important;
+    color: var(--dark) !important;
+}
+
+.btn-light:hover {
+    background-color: #f3f4f6 !important;
+    border-color: #f3f4f6 !important;
+}
+
+.btn-dark {
+    background-color: var(--dark) !important;
+    border-color: var(--dark) !important;
+    color: var(--light) !important;
+}
+
+.btn-dark:hover {
+    background-color: #0f172a !important;
+    border-color: #0f172a !important;
 }
 
 /* Custom Container */
@@ -89,10 +155,12 @@
 
 .btn-success {
     background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
 }
 
 .btn-success:hover {
-    background-color: #218838 !important;
+    background-color: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
 }
 
 @media (max-width: 992px) {
@@ -192,7 +260,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: var(--light);
     background: var(--primary);
     border-radius: 40px;
     font-size: 20px;
@@ -220,7 +288,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF !important;
+    background: var(--light) !important;
     border-radius: 50px;
     border: 1px dashed var(--primary) !important;
 }
@@ -253,7 +321,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: var(--light);
     position: relative;
     margin-top: -75px;
     z-index: 0;

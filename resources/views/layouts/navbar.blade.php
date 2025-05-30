@@ -7,7 +7,7 @@
                     <img class="img-fluid" src="{{ asset('assets/img/icon-deal.png') }}" alt="Icon"
                         style="width: 30px; height: 30px;">
                 </div>
-                <h1 class="m-0 text-primary">KosMe</h1>
+                <h1 class="m-0" style="color: var(--primary);">KosMe</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
