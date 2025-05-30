@@ -30,6 +30,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
@@ -47,12 +50,14 @@
         @include('layouts.navbar')
         <!-- Navbar End -->
 
-        @yield('content')
+        <main>
+            @yield('content')
+            {{ $slot ?? '' }}
+        </main>
 
         <!-- Footer Start -->
         @include('layouts.footer')
         <!-- Footer End -->
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
