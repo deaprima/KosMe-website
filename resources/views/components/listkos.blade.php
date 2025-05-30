@@ -92,6 +92,37 @@
         opacity: 0;
         display: none;
     }
+
+    /* Override Bootstrap button colors to match the theme */
+    .btn-outline-primary {
+        color: #2563EB !important;
+        border-color: #2563EB !important;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary.active {
+        color: #fff !important;
+        background-color: #2563EB !important;
+        border-color: #2563EB !important;
+    }
+
+    .btn-primary {
+        background-color: #2563EB !important;
+        border-color: #2563EB !important;
+    }
+
+    .btn-primary:hover {
+        background-color: #1d4ed8 !important;
+        border-color: #1d4ed8 !important;
+    }
+
+    .text-primary {
+        color: #2563EB !important;
+    }
+
+    .bg-primary {
+        background-color: #2563EB !important;
+    }
 </style>
 
 <script>
