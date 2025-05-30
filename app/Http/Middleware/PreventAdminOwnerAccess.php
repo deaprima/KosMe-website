@@ -12,9 +12,21 @@ class PreventAdminOwnerAccess
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->role === 'admin') {
+            $user = Auth::user();
+            $currentPath = $request->path();
+
+            // Allow access to their respective dashboard routes
+            if ($user->role === 'admin' && str_starts_with($currentPath, 'admin')) {
+                return $next($request);
+            }
+            if ($user->role === 'owner' && str_starts_with($currentPath, 'owner')) {
+                return $next($request);
+            }
+
+            // Redirect to respective dashboard for other routes
+            if ($user->role === 'admin') {
                 return redirect('/admin');
-            } elseif (Auth::user()->role === 'owner') {
+            } elseif ($user->role === 'owner') {
                 return redirect('/owner');
             }
         }
