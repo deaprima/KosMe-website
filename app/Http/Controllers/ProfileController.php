@@ -39,6 +39,17 @@ class ProfileController extends Controller
             $data['avatar'] = $request->file('avatar')->store('avatar', 'public');
         }
 
+        // Check if phone number is unique (excluding current user)
+        if ($request->filled('phone_number') && $request->phone_number !== $user->phone_number) {
+            $existingUser = \App\Models\User::where('phone_number', $request->phone_number)
+                ->where('id', '!=', $user->id)
+                ->first();
+
+            if ($existingUser) {
+                return back()->withErrors(['phone_number' => 'Nomor telepon ini sudah digunakan oleh pengguna lain.']);
+            }
+        }
+
         $user->fill($data);
 
         if ($user->isDirty('email')) {

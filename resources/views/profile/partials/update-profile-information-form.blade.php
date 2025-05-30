@@ -1,11 +1,11 @@
-<section>
+<section class="p-4">
     <header>
-        <h2 class="text-lg font-medium text-gray-900 mb-4">
-            {{ __('Profile Information') }}
+        <h2 class="mb-4 text-lg font-medium text-gray-900">
+            Informasi Profil
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 mb-4">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="mt-1 mb-4 text-sm text-gray-600">
+            Perbarui informasi profil dan alamat email akun Anda.
         </p>
     </header>
 
@@ -21,16 +21,15 @@
             <div class="col-md-4">
                 <div class="avatar-upload position-relative d-inline-block w-100">
                     <div class="mb-2 text-center">
-                        <label class="form-label">Photo Profile</label>
+                        <label class="form-label">Foto Profil</label>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="position-relative">
                             <img src="{{ Auth::user()->avatar_url }}" alt="Avatar Preview"
                                 class="rounded-circle avatar-preview" id="avatarPreview"
-                                style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #e9ecef;">
-                            <label for="avatar"
-                                class="bottom-0 p-2 text-white position-absolute end-0 rounded-circle"
-                                style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background: linear-gradient(to right, var(--primary), var(--primary-dark));">
+                                style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #e9ecef;">
+                            <label for="avatar" class="bottom-0 p-2 text-white position-absolute end-0 rounded-circle"
+                                style="cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--primary);">
                                 <i class="fas fa-camera"></i>
                             </label>
                         </div>
@@ -45,45 +44,59 @@
 
             <div class="col-md-8">
                 <!-- Nama Lengkap -->
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}"
-                        placeholder="Nama Lengkap" required>
+                <div class="mb-3 form-floating">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" value="{{ old('name', $user->name) }}" placeholder="Nama Lengkap" required>
                     <label for="name"><i class="fas fa-user me-2"></i>Nama Lengkap</label>
-                    <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                    @error('name')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <!-- Nomor Telepon -->
-                <div class="form-floating mb-3">
-                    <input type="tel" class="form-control" id="phone" name="phone_number"
-                        value="{{ old('phone_number', $user->phone_number) }}" placeholder="Nomor Telepon"
-                        pattern="[0-9]{9,13}" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                        minlength="9" maxlength="13" required>
+                <div class="mb-3 form-floating">
+                    <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
+                        id="phone" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}"
+                        placeholder="Nomor Telepon" pattern="[0-9]{9,13}" inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" minlength="9" maxlength="13" required>
                     <label for="phone"><i class="fas fa-phone me-2"></i>Nomor Telepon</label>
-                    <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
+                    @error('phone_number')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3 form-floating">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                        name="email" value="{{ old('email', $user->email) }}" placeholder="Email" required
+                        autocomplete="username">
+                    <label for="email"><i class="fas fa-envelope me-2"></i>Email</label>
+                    @error('email')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
         </div>
 
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}"
-                placeholder="Email" required autocomplete="username">
-            <label for="email"><i class="fas fa-envelope me-2"></i>Email</label>
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
-        </div>
-
-        @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+        @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
             <div>
-                <p class="text-sm mt-2 text-gray-800">
-                    {{ __('Your email address is unverified.') }}
+                <p class="mt-2 text-sm text-gray-800">
+                    Alamat email Anda belum terverifikasi.
 
-                    <button form="send-verification" class="btn btn-link p-0 m-0 align-baseline">
-                        {{ __('Click here to re-send the verification email.') }}
+                    <button form="send-verification" class="p-0 m-0 align-baseline btn btn-link">
+                        Klik di sini untuk mengirim ulang email verifikasi.
                     </button>
                 </p>
 
                 @if (session('status') === 'verification-link-sent')
-                    <p class="mt-2 font-medium text-sm text-green-600">
-                        {{ __('A new verification link has been sent to your email address.') }}
+                    <p class="mt-2 text-sm font-medium text-green-600">
+                        Link verifikasi baru telah dikirim ke alamat email Anda.
                     </p>
                 @endif
             </div>
@@ -91,15 +104,43 @@
 
         <div class="flex items-center gap-4">
             <button type="submit" class="btn btn-primary square-btn">
-                <i class="fas fa-save me-2"></i>{{ __('Save') }}
+                <i class="fas fa-save me-2"></i>Simpan
             </button>
 
             @if (session('status') === 'profile-updated')
-                <p class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+                <div class="px-3 py-2 mb-0 alert alert-success d-inline-flex align-items-center" role="alert">
+                    <i class="fas fa-check-circle me-2"></i>
+                    <span>Profil berhasil diperbarui.</span>
+                </div>
             @endif
         </div>
     </form>
 </section>
+
+<style>
+    .alert {
+        border-radius: 4px;
+        font-size: 0.875rem;
+    }
+
+    .alert-success {
+        background-color: #d1fae5;
+        border-color: #a7f3d0;
+        color: #065f46;
+    }
+
+    .alert-danger {
+        background-color: #fee2e2;
+        border-color: #fecaca;
+        color: #991b1b;
+    }
+
+    .text-danger {
+        color: #dc2626 !important;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
