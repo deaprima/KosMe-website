@@ -16,7 +16,7 @@
                 <div class="navbar-nav ms-auto">
                     <a href="{{ route('home') }}"
                         class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Beranda</a>
-                    <a href="#searchkos" class="nav-item nav-link">Cari Kos</a>
+                    <a href="{{ route('boarding-house.search') }}" class="nav-item nav-link">Cari Kos</a>
                     <a href="#about" class="nav-item nav-link">Tentang</a>
                     @auth
                         <div class="nav-item dropdown d-lg-none">
