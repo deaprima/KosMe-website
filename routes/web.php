@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BoardingHouseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -18,5 +19,8 @@ Route::get('/check-email', function (Request $request) {
     $exists = \App\Models\User::where('email', $email)->exists();
     return response()->json(['exists' => $exists]);
 })->name('check-email');
+
+Route::get('/boarding-houses', [BoardingHouseController::class, 'index'])->name('boarding-house.index');
+Route::get('/boarding-houses/{boardingHouse:slug}', [BoardingHouseController::class, 'detail'])->name('boarding-house.detail');
 
 require __DIR__ . '/auth.php';

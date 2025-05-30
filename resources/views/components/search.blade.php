@@ -5,7 +5,7 @@
                 <form action="#" method="GET">
                     <div class="row g-2">
                         <div class="col-md-10">
-                            <input type="text" name="location" class="py-3 border-0 form-control" placeholder="Masukkan Lokasi (e.g., Surabaya)">
+                            <input type="text" name="location" class="py-3 border-0 form-control" placeholder="Cari Kos sesuai dengan keinginan mu">
                         </div>
                         <div class="col-md-2">
                             <button type="submit" class="py-3 border-0 btn btn-dark w-100">Cari</button>

@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BoardingHouse;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.home');
+        $boardingHouses = BoardingHouse::with(['categories', 'rooms'])
+            ->latest()
+            ->take(6)
+            ->get();
+
+        return view('pages.home', compact('boardingHouses'));
     }
 }
