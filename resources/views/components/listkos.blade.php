@@ -97,23 +97,43 @@
     .btn-outline-primary {
         color: #2563EB !important;
         border-color: #2563EB !important;
+        box-shadow: none !important;
     }
 
     .btn-outline-primary:hover,
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active,
     .btn-outline-primary.active {
         color: #fff !important;
         background-color: #2563EB !important;
         border-color: #2563EB !important;
+        box-shadow: none !important;
+    }
+
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active:focus {
+        box-shadow: none !important;
+        outline: none !important;
     }
 
     .btn-primary {
         background-color: #2563EB !important;
         border-color: #2563EB !important;
+        box-shadow: none !important;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
         background-color: #1d4ed8 !important;
         border-color: #1d4ed8 !important;
+        box-shadow: none !important;
+    }
+
+    .btn-primary:focus,
+    .btn-primary:active:focus {
+        box-shadow: none !important;
+        outline: none !important;
     }
 
     .text-primary {
@@ -122,6 +142,13 @@
 
     .bg-primary {
         background-color: #2563EB !important;
+    }
+
+    /* Remove any default focus styles */
+    .btn:focus,
+    .btn:active:focus {
+        box-shadow: none !important;
+        outline: none !important;
     }
 </style>
 
