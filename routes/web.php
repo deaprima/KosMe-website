@@ -21,6 +21,7 @@ Route::get('/check-email', function (Request $request) {
 })->name('check-email');
 
 Route::get('/boarding-houses', [BoardingHouseController::class, 'index'])->name('boarding-house.index');
+Route::get('/boarding-houses/search', [BoardingHouseController::class, 'search'])->name('boarding-house.search');
 Route::get('/boarding-houses/{boardingHouse:slug}', [BoardingHouseController::class, 'detail'])->name('boarding-house.detail');
 
 require __DIR__ . '/auth.php';
