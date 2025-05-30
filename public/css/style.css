@@ -44,11 +44,21 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
     color: var(--light) !important;
+    box-shadow: none !important;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
     background-color: #1d4ed8 !important;
     border-color: #1d4ed8 !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:focus,
+.btn-primary:active:focus {
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .btn-secondary {
@@ -82,6 +92,45 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .btn-dark:hover {
     background-color: #0f172a !important;
     border-color: #0f172a !important;
+}
+
+/* List Kos Styles */
+.kos-item {
+    transition: opacity 0.3s ease;
+}
+
+.kos-item.hidden {
+    opacity: 0;
+    display: none;
+}
+
+.btn-outline-primary {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active {
+    color: var(--light) !important;
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Remove any default focus styles */
+.btn:focus,
+.btn:active:focus {
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 /* Custom Container */
