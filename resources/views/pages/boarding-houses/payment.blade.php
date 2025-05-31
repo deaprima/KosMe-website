@@ -119,8 +119,39 @@
                                     <div class="row">
                                         <div class="mb-3 col-md-6 mb-lg-4">
                                             <label class="form-label">Tanggal Mulai</label>
-                                            <input type="date" name="start_date" class="form-control form-control-lg"
-                                                required min="{{ date('Y-m-d') }}">
+                                            <div class="row g-2">
+                                                <div class="col-4">
+                                                    <select name="start_day" class="form-select form-select-lg" required>
+                                                        <option value="">Hari</option>
+                                                        @for ($i = 1; $i <= 31; $i++)
+                                                            <option value="{{ $i }}">{{ $i }}
+                                                            </option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <select name="start_month" class="form-select form-select-lg" required>
+                                                        <option value="">Bulan</option>
+                                                        @for ($i = 1; $i <= 12; $i++)
+                                                            <option value="{{ $i }}">
+                                                                {{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <select name="start_year" class="form-select form-select-lg" required>
+                                                        <option value="">Tahun</option>
+                                                        @php
+                                                            $currentYear = date('Y');
+                                                            $endYear = $currentYear + 5; // Example: show current year + 5 years
+                                                        @endphp
+                                                        @for ($i = $currentYear; $i <= $endYear; $i++)
+                                                            <option value="{{ $i }}">{{ $i }}
+                                                            </option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="mb-3 col-md-6 mb-lg-4">
                                             <label class="form-label">Durasi Sewa (Bulan)</label>
