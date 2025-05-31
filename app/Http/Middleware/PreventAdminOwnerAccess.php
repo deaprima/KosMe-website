@@ -15,19 +15,28 @@ class PreventAdminOwnerAccess
             $user = Auth::user();
             $currentPath = $request->path();
 
-            // Allow access to their respective dashboard routes
-            if ($user->role === 'admin' && str_starts_with($currentPath, 'admin')) {
-                return $next($request);
-            }
-            if ($user->role === 'owner' && str_starts_with($currentPath, 'owner')) {
-                return $next($request);
+            // Define allowed paths for each role
+            $adminAllowedPaths = ['admin', 'logout'];
+            $ownerAllowedPaths = ['owner', 'logout'];
+
+            // If user is admin
+            if ($user->role === 'admin') {
+                foreach ($adminAllowedPaths as $path) {
+                    if (str_starts_with($currentPath, $path)) {
+                        return $next($request);
+                    }
+                }
+                return redirect('/admin')->with('error', 'Access denied. Admin can only access admin dashboard.');
             }
 
-            // Redirect to respective dashboard for other routes
-            if ($user->role === 'admin') {
-                return redirect('/admin');
-            } elseif ($user->role === 'owner') {
-                return redirect('/owner');
+            // If user is owner
+            if ($user->role === 'owner') {
+                foreach ($ownerAllowedPaths as $path) {
+                    if (str_starts_with($currentPath, $path)) {
+                        return $next($request);
+                    }
+                }
+                return redirect('/owner')->with('error', 'Access denied. Owner can only access owner dashboard.');
             }
         }
 

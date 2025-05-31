@@ -19,10 +19,14 @@ Route::get('/check-email', function (Request $request) {
     return response()->json(['exists' => $exists]);
 })->name('check-email');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/boarding-houses/search', [BoardingHouseController::class, 'search'])->name('boarding-house.search');
-Route::get('/boarding-houses/{boardingHouse:slug}', [BoardingHouseController::class, 'detail'])->name('boarding-house.detail');
-Route::middleware('auth')->group(function () {
+// Public routes that should be protected from admin/owner access
+Route::middleware([\App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/boarding-houses/search', [BoardingHouseController::class, 'search'])->name('boarding-house.search');
+    Route::get('/boarding-houses/{boardingHouse:slug}', [BoardingHouseController::class, 'detail'])->name('boarding-house.detail');
+});
+
+Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {
     Route::get('/boarding-houses/{boardingHouse:slug}/booking/{room}', [BoardingHouseController::class, 'payment'])->name('booking.payment');
     Route::post('/boarding-houses/{boardingHouse:slug}/booking/{room}/process', [BoardingHouseController::class, 'processPayment'])->name('booking.process');
     Route::get('/booking/{transaction}/success', [BoardingHouseController::class, 'success'])->name('booking.success');
