@@ -3,11 +3,10 @@
     <nav class="bg-white navbar navbar-expand-lg navbar-light">
         <div class="navbar-container d-flex justify-content-between align-items-center">
             <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
-                <div class="p-2 icon me-2">
-                    <img class="img-fluid" src="{{ asset('assets/img/icon-deal.png') }}" alt="Icon"
-                        style="width: 30px; height: 30px;">
-                </div>
-                <h1 class="m-0" style="color: var(--primary);">KosMe</h1>
+                <img class="img-fluid" src="{{ asset('assets/logo/logo1.png') }}" alt="Icon"
+                    style="width: 30px; height: 30px;">
+                <img src="{{ 'assets/logo/logo4.png' }}" alt="KosMe Logo"
+                    style="height: 40px; width: auto; padding-left: 10px;">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>

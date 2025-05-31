@@ -377,7 +377,7 @@
         <div class="login-container">
             <div class="login-form-container col-lg-6">
                 <div class="login-header">
-                    <img src="/home/img/logo_kosme.png" alt="KosKita Logo" class="logo rounded-circle">
+                    <img src="{{ asset('assets/logo/logo3.png') }}" alt="Logo" style="height: 80px; width: auto; padding-bottom:15px" class="logo">
                     <h2>Selamat Datang Kembali!</h2>
                     <p class="mb-0">Silakan login untuk mengakses akun Anda</p>
                 </div>
