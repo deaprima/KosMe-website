@@ -514,3 +514,22 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     padding-right: 0;
     border-right: none;
 }
+
+/* Remove default outline and set primary color for focus */
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25); /* Using a translucent version of --primary */
+    outline: 0;
+}
+
+/* Style for checked radio buttons */
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+    outline: 0;
+}

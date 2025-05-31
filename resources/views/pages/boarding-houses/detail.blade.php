@@ -46,7 +46,9 @@
                                             {{ $room->capacity }} orang</p>
                                         <p class="mb-2"><i class="fa fa-tag text-primary me-2"></i>Rp
                                             {{ number_format($room->price_per_month, 0, ',', '.') }}/bulan</p>
-                                        <a href="#" class="btn btn-primary">Booking Sekarang</a>
+                                        <a href="{{ route('booking.payment', [$boardingHouse, $room]) }}"
+                                            class="btn btn-primary">Booking
+                                            Sekarang</a>
                                     </div>
                                 </div>
                             @endforeach
