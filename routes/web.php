@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BoardingHouseController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,7 @@ Route::middleware([\App\Http\Middleware\PreventAdminOwnerAccess::class])->group(
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/boarding-houses/search', [BoardingHouseController::class, 'search'])->name('boarding-house.search');
     Route::get('/boarding-houses/{boardingHouse:slug}', [BoardingHouseController::class, 'detail'])->name('boarding-house.detail');
+    Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
 });
 
 Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {

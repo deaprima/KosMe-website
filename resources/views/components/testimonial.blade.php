@@ -1,54 +1,27 @@
 <!-- Testimonial Start -->
-<div class="container-xxl py-5">
+<div class="py-5 container-xxl">
     <div class="container-custom">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="mb-3">Our Clients Say!</h1>
-            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod
-                sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        <div class="mx-auto mb-5 text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Apa Kata Mereka?</h1>
+            <p>Dengarkan pengalaman nyata dari penghuni kos yang telah menemukan hunian ideal mereka melalui KosMe.
+                Temukan kisah sukses dan kepuasan mereka dalam mencari tempat tinggal yang nyaman.</p>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item bg-light rounded p-3">
-                <div class="bg-white border rounded p-4">
-                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
-                        stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('assets/img/testimonial-1.jpg') }}"
-                            style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6 class="fw-bold mb-1">Client Name</h6>
-                            <small>Profession</small>
+            @foreach ($testimonials as $testimonial)
+                <div class="p-3 rounded testimonial-item bg-light">
+                    <div class="p-4 bg-white border rounded">
+                        <p>{{ $testimonial->content }}</p>
+                        <div class="d-flex align-items-center">
+                            <img class="flex-shrink-0 rounded img-fluid"
+                                src="{{ asset('storage/' . $testimonial->photo) }}" style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="mb-1 fw-bold">{{ $testimonial->name }}</h6>
+                                <small>{{ $testimonial->boardingHouse->name }}</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-item bg-light rounded p-3">
-                <div class="bg-white border rounded p-4">
-                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
-                        stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('assets/img/testimonial-2.jpg') }}"
-                            style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6 class="fw-bold mb-1">Client Name</h6>
-                            <small>Profession</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-light rounded p-3">
-                <div class="bg-white border rounded p-4">
-                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
-                        stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('assets/img/testimonial-3.jpg') }}"
-                            style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6 class="fw-bold mb-1">Client Name</h6>
-                            <small>Profession</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

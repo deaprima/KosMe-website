@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BoardingHouse;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,10 @@ class HomeController extends Controller
             ->take(6)
             ->get();
 
-        return view('pages.home', compact('boardingHouses'));
+        $testimonials = Testimonial::with('boardingHouse')
+            ->latest()
+            ->get();
+
+        return view('pages.home', compact('boardingHouses', 'testimonials'));
     }
 }
