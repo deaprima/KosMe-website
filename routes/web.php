@@ -34,6 +34,7 @@ Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])
     Route::post('/boarding-houses/{boardingHouse:slug}/booking/{room}/process', [BoardingHouseController::class, 'processPayment'])->name('booking.process');
     Route::get('/booking/{transaction}/success', [BoardingHouseController::class, 'success'])->name('booking.success');
     Route::post('/boarding-houses/{boardingHouse}/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+    Route::get('/transactions/history', [App\Http\Controllers\TransactionController::class, 'history'])->name('transactions.history');
 });
 
 // Midtrans callback route (no auth required)

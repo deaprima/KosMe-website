@@ -1,4 +1,19 @@
 <!-- Navbar Start -->
+<style>
+    .dropdown-item:hover,
+    .dropdown-item:focus,
+    .dropdown-item:active {
+        background-color: #0d6efd !important;
+        color: white !important;
+    }
+
+    .dropdown-item.text-danger:hover,
+    .dropdown-item.text-danger:focus,
+    .dropdown-item.text-danger:active {
+        background-color: #dc3545 !important;
+        color: white !important;
+    }
+</style>
 <div class="nav-bar">
     <nav class="bg-white navbar navbar-expand-lg navbar-light">
         <div class="navbar-container d-flex justify-content-between align-items-center">
@@ -17,7 +32,7 @@
                         class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Beranda</a>
                     <a href="{{ route('boarding-house.search') }}" class="nav-item nav-link">Cari Kos</a>
                     <a href="#about" class="nav-item nav-link">Tentang</a>
-                    @auth
+                    {{-- @auth
                         <div class="nav-item dropdown d-lg-none">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                 <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}"
@@ -32,6 +47,9 @@
                                 <a href="{{ route('profile.edit') }}" class="dropdown-item">
                                     <i class="fas fa-user me-2"></i>Profile
                                 </a>
+                                <a href="{{ route('transactions.history') }}" class="dropdown-item">
+                                    <i class="fas fa-history me-2"></i>Riwayat Transaksi
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -44,13 +62,13 @@
                     @else
                         <a href="{{ route('login') }}"
                             class="nav-item nav-link btn btn-success square-btn d-lg-none">Masuk</a>
-                    @endauth
+                    @endauth --}}
                 </div>
                 @auth
                     <div class="dropdown d-none d-lg-block">
                         <button class="p-0 border-0 btn" type="button" data-bs-toggle="dropdown">
-                            <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}"
-                                class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                            <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle"
+                                style="width: 40px; height: 40px; object-fit: cover;">
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <div class="px-3 py-2">
@@ -60,6 +78,9 @@
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('profile.edit') }}" class="dropdown-item">
                                 <i class="fas fa-user me-2"></i>Profile
+                            </a>
+                            <a href="{{ route('transactions.history') }}" class="dropdown-item">
+                                <i class="fas fa-history me-2"></i>Riwayat Transaksi
                             </a>
                             <div class="dropdown-divider"></div>
                             <form action="{{ route('logout') }}" method="POST">
