@@ -104,16 +104,26 @@ class BoardingHouseController extends Controller
             'room_id' => $room->id,
             'user_id' => auth()->id(),
             'payment_method' => $request->payment_method,
-            'payment_status' => null, // Will be set by Midtrans
+            'payment_status' => 'pending',
             'start_date' => $request->start_date,
             'duration' => $request->duration,
             'total_amount' => $totalAmount,
             'transaction_date' => now(),
         ]);
 
-        // TODO: Integrate with Midtrans
-        // For now, just redirect to a success page
-        return redirect()->route('booking.success', $transaction);
+        try {
+            $midtransService = new \App\Services\MidtransService();
+            $snapToken = $midtransService->createTransaction($transaction);
+
+            return view('pages.boarding-houses.payment', [
+                'boardingHouse' => $boardingHouse,
+                'room' => $room,
+                'transaction' => $transaction,
+                'snapToken' => $snapToken
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to process payment: ' . $e->getMessage());
+        }
     }
 
     public function success(Transaction $transaction)

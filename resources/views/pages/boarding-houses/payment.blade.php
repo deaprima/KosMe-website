@@ -111,83 +111,85 @@
                             </div>
 
                             <!-- Payment Form -->
-                            <form action="{{ route('booking.process', [$boardingHouse, $room]) }}" method="POST"
-                                id="payment-form">
-                                @csrf
-                                <div class="mb-4 mb-lg-5">
-                                    <h4 class="mb-3 mb-lg-4">Informasi Sewa</h4>
-                                    <div class="row">
-                                        <div class="mb-3 col-md-6 mb-lg-4">
-                                            <label class="form-label">Tanggal Mulai</label>
-                                            <div class="row g-2">
-                                                <div class="col-4">
-                                                    <select name="start_day" class="form-select form-select-lg" required>
-                                                        <option value="">Hari</option>
-                                                        @for ($i = 1; $i <= 31; $i++)
-                                                            <option value="{{ $i }}">{{ $i }}
-                                                            </option>
-                                                        @endfor
-                                                    </select>
-                                                </div>
-                                                <div class="col-4">
-                                                    <select name="start_month" class="form-select form-select-lg" required>
-                                                        <option value="">Bulan</option>
-                                                        @for ($i = 1; $i <= 12; $i++)
-                                                            <option value="{{ $i }}">
-                                                                {{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
-                                                        @endfor
-                                                    </select>
-                                                </div>
-                                                <div class="col-4">
-                                                    <select name="start_year" class="form-select form-select-lg" required>
-                                                        <option value="">Tahun</option>
-                                                        @php
-                                                            $currentYear = date('Y');
-                                                            $endYear = $currentYear + 5; // Example: show current year + 5 years
-                                                        @endphp
-                                                        @for ($i = $currentYear; $i <= $endYear; $i++)
-                                                            <option value="{{ $i }}">{{ $i }}
-                                                            </option>
-                                                        @endfor
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 col-md-6 mb-lg-4">
-                                            <label class="form-label">Durasi Sewa (Bulan)</label>
-                                            <input type="number" name="duration" class="form-control form-control-lg"
-                                                required min="1" value="1">
-                                        </div>
+                            @if (isset($snapToken))
+                                <div class="alert alert-info">
+                                    Silakan selesaikan pembayaran Anda menggunakan metode pembayaran yang tersedia di bawah
+                                    ini.
+                                </div>
+
+                                <div class="border rounded p-3 p-lg-4 mb-4">
+                                    <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                                        <span>Kode Transaksi</span>
+                                        <span>{{ $transaction->code }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                                        <span>Harga Sewa (1 bulan)</span>
+                                        <span>Rp {{ number_format($room->price_per_month, 0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                                        <span>Durasi Sewa</span>
+                                        <span>{{ $transaction->duration }} bulan</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                                        <span>Metode Pembayaran</span>
+                                        <span>{{ $transaction->payment_method === 'full_payment' ? 'Bayar Penuh' : 'Bayar DP (50%)' }}</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <strong>Total Pembayaran</strong>
+                                        <strong>Rp {{ number_format($transaction->total_amount, 0, ',', '.') }}</strong>
                                     </div>
                                 </div>
 
-                                <div class="mb-4 mb-lg-5">
-                                    <h4 class="mb-3 mb-lg-4">Metode Pembayaran</h4>
-                                    <div class="row">
-                                        <div class="mb-3 col-md-6 mb-lg-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="payment_method"
-                                                    id="full_payment" value="full_payment" checked>
-                                                <label class="form-check-label" for="full_payment">
-                                                    Bayar Penuh
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 col-md-6 mb-lg-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="payment_method"
-                                                    id="down_payment" value="down_payment">
-                                                <label class="form-check-label" for="down_payment">
-                                                    Bayar DP (50%)
-                                                </label>
-                                            </div>
-                                        </div>
+                                <button id="pay-button" class="btn btn-primary btn-lg w-100">Bayar Sekarang</button>
+                            @else
+                                <form
+                                    action="{{ route('booking.process', ['boardingHouse' => $boardingHouse->slug, 'room' => $room->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <label for="start_date" class="form-label">Tanggal Mulai</label>
+                                        <input type="date" class="form-control @error('start_date') is-invalid @enderror"
+                                            id="start_date" name="start_date" value="{{ old('start_date') }}"
+                                            min="{{ date('Y-m-d') }}">
+                                        @error('start_date')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                </div>
 
-                                <div class="mb-4 mb-lg-5">
-                                    <h4 class="mb-3 mb-lg-4">Ringkasan Pembayaran</h4>
-                                    <div class="border rounded p-3 p-lg-4">
+                                    <div class="mb-4">
+                                        <label for="duration" class="form-label">Durasi Sewa (bulan)</label>
+                                        <input type="number" class="form-control @error('duration') is-invalid @enderror"
+                                            id="duration" name="duration" value="{{ old('duration', 1) }}" min="1">
+                                        @error('duration')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label">Metode Pembayaran</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="payment_method"
+                                                id="full_payment" value="full_payment"
+                                                {{ old('payment_method') === 'full_payment' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="full_payment">
+                                                Bayar Penuh
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="payment_method"
+                                                id="down_payment" value="down_payment"
+                                                {{ old('payment_method') === 'down_payment' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="down_payment">
+                                                Bayar DP (50%)
+                                            </label>
+                                        </div>
+                                        @error('payment_method')
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="border rounded p-3 p-lg-4 mb-4">
                                         <div class="d-flex justify-content-between mb-2 mb-lg-3">
                                             <span>Harga Sewa (1 bulan)</span>
                                             <span>Rp {{ number_format($room->price_per_month, 0, ',', '.') }}</span>
@@ -207,10 +209,11 @@
                                                 {{ number_format($room->price_per_month, 0, ',', '.') }}</strong>
                                         </div>
                                     </div>
-                                </div>
 
-                                <button type="submit" class="btn btn-primary btn-lg w-100">Bayar Sekarang</button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Lanjut ke
+                                        Pembayaran</button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -218,75 +221,79 @@
         </div>
     </div>
 
-    @push('scripts')
+    @if (isset($snapToken))
+        <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
         <script>
-            console.log('Payment page script loaded');
-
-            document.addEventListener('DOMContentLoaded', function() {
-                // Get all required elements
-                const durationInput = document.querySelector('input[name="duration"]');
-                const durationDisplay = document.getElementById('duration-display');
-                const totalAmount = document.getElementById('total-amount');
-                const pricePerMonth = {{ $room->price_per_month }};
-                const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');
-
-                // Function to format currency
-                function formatRupiah(number) {
-                    return 'Rp ' + number.toLocaleString('id-ID');
-                }
-
-                // Function to calculate and update total
-                function calculateTotal() {
-                    // Get current values
-                    const duration = parseInt(durationInput.value) || 1;
-                    const fullPaymentRadio = document.getElementById('full_payment');
-                    const downPaymentRadio = document.getElementById('down_payment');
-                    const paymentMethodDisplay = document.getElementById('payment-method-display');
-
-                    const isDownPayment = downPaymentRadio.checked;
-
-                    // Log values for debugging
-                    console.log('calculateTotal called');
-                    console.log('Duration input value:', durationInput.value);
-                    console.log('Parsed duration:', duration);
-                    console.log('Is down payment:', isDownPayment);
-
-                    // Calculate total
-                    let total = pricePerMonth * duration;
-                    if (isDownPayment) {
-                        total = total * 0.5;
+            document.getElementById('pay-button').onclick = function() {
+                window.snap.pay('{{ $snapToken }}', {
+                    onSuccess: function(result) {
+                        window.location.href = '{{ route('booking.success', $transaction) }}';
+                    },
+                    onPending: function(result) {
+                        window.location.href = '{{ route('booking.success', $transaction) }}';
+                    },
+                    onError: function(result) {
+                        alert('Pembayaran gagal!');
+                    },
+                    onClose: function() {
+                        alert('Anda menutup popup tanpa menyelesaikan pembayaran');
                     }
-
-                    // Log calculated total
-                    console.log('Calculated total:', total);
-
-                    // Update displays immediately
-                    durationDisplay.textContent = duration + ' bulan';
-                    totalAmount.textContent = formatRupiah(total);
-
-                    // Update payment method display
-                    if (fullPaymentRadio.checked) {
-                        paymentMethodDisplay.textContent = 'Bayar Penuh';
-                    } else if (downPaymentRadio.checked) {
-                        paymentMethodDisplay.textContent = 'Bayar DP (50%)';
-                    }
-                }
-
-                // Add event listeners for immediate updates
-                durationInput.oninput = calculateTotal;
-                durationInput.onchange = calculateTotal;
-
-                // Add event listeners for payment method changes
-                paymentMethodInputs.forEach(input => {
-                    input.onchange = calculateTotal;
                 });
-
-                // Set initial value and calculate
-                durationInput.value = 1;
-                calculateTotal();
-
-                console.log('DOM content loaded and initial calculation triggered.');
-            });
+            };
         </script>
-    @endpush
+    @else
+        @push('scripts')
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const durationInput = document.getElementById('duration');
+                    const durationDisplay = document.getElementById('duration-display');
+                    const totalAmount = document.getElementById('total-amount');
+                    const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');
+                    const paymentMethodDisplay = document.getElementById('payment-method-display');
+                    const pricePerMonth = {{ $room->price_per_month }};
+
+                    function formatRupiah(amount) {
+                        return 'Rp ' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    }
+
+                    function calculateTotal() {
+                        const duration = parseInt(durationInput.value) || 1;
+                        let total = pricePerMonth * duration;
+
+                        // Check which payment method is selected
+                        const fullPaymentRadio = document.getElementById('full_payment');
+                        const downPaymentRadio = document.getElementById('down_payment');
+
+                        if (downPaymentRadio.checked) {
+                            total = total * 0.5; // 50% for down payment
+                        }
+
+                        // Update displays immediately
+                        durationDisplay.textContent = duration + ' bulan';
+                        totalAmount.textContent = formatRupiah(total);
+
+                        // Update payment method display
+                        if (fullPaymentRadio.checked) {
+                            paymentMethodDisplay.textContent = 'Bayar Penuh';
+                        } else if (downPaymentRadio.checked) {
+                            paymentMethodDisplay.textContent = 'Bayar DP (50%)';
+                        }
+                    }
+
+                    // Add event listeners for immediate updates
+                    durationInput.oninput = calculateTotal;
+                    durationInput.onchange = calculateTotal;
+
+                    // Add event listeners for payment method changes
+                    paymentMethodInputs.forEach(input => {
+                        input.onchange = calculateTotal;
+                    });
+
+                    // Set initial value and calculate
+                    durationInput.value = 1;
+                    calculateTotal();
+                });
+            </script>
+        @endpush
+    @endif
 @endsection

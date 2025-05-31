@@ -5,7 +5,7 @@
             <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
                 <img class="img-fluid" src="{{ asset('assets/logo/logo1.png') }}" alt="Icon"
                     style="width: 30px; height: 30px;">
-                <img src="{{ 'assets/logo/logo4.png' }}" alt="KosMe Logo"
+                <img src="{{ asset('assets/logo/logo4.png') }}" alt="KosMe Logo"
                     style="height: 40px; width: auto; padding-left: 10px;">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

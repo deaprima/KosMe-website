@@ -23,6 +23,11 @@ class Transaction extends Model
         'transaction_date',
     ];
 
+    protected $casts = [
+        'start_date' => 'date',
+        'transaction_date' => 'date',
+    ];
+
     public function boardingHouse()
     {
         return $this->belongsTo(BoardingHouse::class);

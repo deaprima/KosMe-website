@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BoardingHouseController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\MidtransController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -34,5 +35,8 @@ Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])
     Route::get('/booking/{transaction}/success', [BoardingHouseController::class, 'success'])->name('booking.success');
     Route::post('/boarding-houses/{boardingHouse}/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
 });
+
+// Midtrans callback route (no auth required)
+Route::post('/midtrans/notification', [MidtransController::class, 'notification'])->name('midtrans.notification');
 
 require __DIR__ . '/auth.php';
