@@ -7,13 +7,19 @@
     <title>Login - Kos Me, Choose Me!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Heebo:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #2563EB;     /* Indigo Blue */
-            --secondary: #F59E0B;   /* Soft Amber */
-            --light: #F9FAFB;       /* Snow White */
-            --dark: #1E293B;        /* Slate Gray */
+            --primary: #2563EB;
+            /* Indigo Blue */
+            --secondary: #F59E0B;
+            /* Soft Amber */
+            --light: #F9FAFB;
+            /* Snow White */
+            --dark: #1E293B;
+            /* Slate Gray */
         }
 
         body {
@@ -319,6 +325,50 @@
         .form-floating>.form-control:not(:placeholder-shown)~label {
             color: var(--primary);
         }
+
+        /* Error notification styles */
+        .alert {
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .alert-danger {
+            background-color: #FEE2E2;
+            color: #DC2626;
+            border-left: 4px solid #DC2626;
+        }
+
+        .alert-success {
+            background-color: #DCFCE7;
+            color: #16A34A;
+            border-left: 4px solid #16A34A;
+        }
+
+        .alert i {
+            margin-right: 8px;
+        }
+
+        /* Form error styles */
+        .is-invalid {
+            border-color: #DC2626 !important;
+        }
+
+        .is-invalid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(220, 38, 38, 0.25) !important;
+        }
+
+        .invalid-feedback {
+            color: #DC2626;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .form-floating .invalid-feedback {
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 
@@ -332,22 +382,59 @@
                     <p class="mb-0">Silakan login untuk mengakses akun Anda</p>
                 </div>
 
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> {{ session('status') }}
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+                    </div>
+                @endif
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                            required>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                            name="email" value="{{ old('email') }}" placeholder="Email" required>
                         <label for="email"><i class="fas fa-envelope me-2"></i>Email</label>
+                        @error('email')
+                            <div class="invalid-feedback">
+                                <i class="fas fa-exclamation-circle"></i>
+                                @if ($message == 'These credentials do not match our records.')
+                                    Email atau password yang Anda masukkan salah
+                                @elseif($message == 'The email field is required.')
+                                    Email harus diisi
+                                @elseif($message == 'Please enter a valid email address.')
+                                    Mohon masukkan alamat email yang valid
+                                @else
+                                    {{ $message }}
+                                @endif
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Password" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            id="password" name="password" placeholder="Password" required>
                         <label for="password"><i class="fas fa-lock me-2"></i>Password</label>
                         <div class="position-absolute end-0 top-50 translate-middle-y me-3">
                             <i class="password-toggle fas fa-eye-slash" id="togglePassword"></i>
                         </div>
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        @error('password')
+                            <div class="invalid-feedback">
+                                <i class="fas fa-exclamation-circle"></i>
+                                @if ($message == 'The password field is required.')
+                                    Password harus diisi
+                                @elseif($message == 'The password is incorrect.')
+                                    Password yang Anda masukkan salah
+                                @else
+                                    {{ $message }}
+                                @endif
+                            </div>
+                        @enderror
                     </div>
 
                     {{-- <div class="mb-3 d-flex justify-content-between">
