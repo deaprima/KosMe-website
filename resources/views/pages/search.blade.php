@@ -2,22 +2,53 @@
 
 @section('content')
     <!-- Banner Start -->
-    <div class="kos-banner">
-        <h2 class="fw-bold">⚡ KosMe</h2>
+    <div class="kos-banner position-relative" style="background: var(--primary); min-height: 200px;">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="mx-auto text-center text-white col-lg-8">
+                    <h1 class="mb-3 display-5 fw-bold" style="letter-spacing: -0.5px;">
+                        <span class="text-white">Temukan Kos Ideal dengan KosMe</span>
+                    </h1>
+                    <p class="mb-0 lead" style="font-size: 1.1rem; opacity: 0.9;">
+                        Platform pencarian kos terbaik dengan ribuan pilihan hunian berkualitas di seluruh Indonesia
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simple Wave Divider -->
+        <div class="bottom-0 position-absolute start-0 w-100"
+            style="height: 40px; background: white; clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);"></div>
     </div>
-    <!-- Banner Promo End -->
+    <!-- Banner End -->
+
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
 
     <!-- Filter/Search Start -->
     <div id="searchkos" class="container" style="scroll-margin-top: 90px;">
-        <div class="bg-white shadow rounded px-4 py-3" style="margin-top: -40px; position: relative; z-index: 2;">
+        <div class="px-4 py-3 bg-white rounded shadow" style="margin-top: -40px; position: relative; z-index: 2;">
             <form action="{{ route('boarding-house.search') }}" method="GET">
                 <div class="row g-2">
                     <div class="col-md-3">
-                        <input type="text" name="search" class="form-select py-3" placeholder="Cari kos..."
+                        <input type="text" name="search" class="py-3 form-select" placeholder="Cari kos..."
                             value="{{ request('search') }}">
                     </div>
                     <div class="col-md-3">
-                        <select class="form-select py-3" name="city" aria-label="Pilih Kota">
+                        <select class="py-3 form-select" name="city" aria-label="Pilih Kota">
                             <option value="">Semua Kota</option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}" {{ request('city') == $city->id ? 'selected' : '' }}>
@@ -26,7 +57,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-select py-3" name="type" aria-label="Tipe Kos">
+                        <select class="py-3 form-select" name="type" aria-label="Tipe Kos">
                             <option value="">Semua Tipe</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->name }}"
@@ -36,7 +67,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 d-grid">
-                        <button class="btn btn-primary py-3" type="submit">Cari</button>
+                        <button class="py-3 btn btn-primary" type="submit">Cari</button>
                     </div>
                 </div>
             </form>
@@ -63,7 +94,7 @@
     <!-- List Kos Start -->
     <div class="container">
         <div class="tab-content">
-            <div id="tab-1" class="tab-pane fade show p-0 active">
+            <div id="tab-1" class="p-0 tab-pane fade show active">
                 <div class="row g-4">
                     @forelse($boardingHouses as $boardingHouse)
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -110,14 +141,14 @@
                             </a>
                         </div>
                     @empty
-                        <div class="col-12 text-center">
+                        <div class="text-center col-12">
                             <p class="text-muted">Tidak ada kos yang ditemukan</p>
                         </div>
                     @endforelse
 
                     <!-- Pagination -->
                     @if ($boardingHouses->hasPages())
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="text-center col-12 wow fadeInUp" data-wow-delay="0.1s">
                             {{ $boardingHouses->links() }}
                         </div>
                     @endif

@@ -1,5 +1,5 @@
 <!-- About Start -->
-<div class="p-0 bg-white container-fluid">
+<div class="p-0 bg-white container-fluid" id="about">
     <div class="container-custom">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
