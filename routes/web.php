@@ -8,7 +8,7 @@ use App\Http\Controllers\MidtransController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
-// Routes that need to be protected from admin/owner access
+// Routes protected from admin/owner access
 Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -21,7 +21,7 @@ Route::get('/check-email', function (Request $request) {
     return response()->json(['exists' => $exists]);
 })->name('check-email');
 
-// Public routes that should be protected from admin/owner access
+// Public routes protected from admin/owner access
 Route::middleware([\App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/boarding-houses/search', [BoardingHouseController::class, 'search'])->name('boarding-house.search');
