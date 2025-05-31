@@ -3,7 +3,7 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h5 class="mb-4 text-white">Get In Touch</h5>
+                <h5 class="mb-4 text-white">Mengenal Kami</h5>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Surabaya, Jawa Timur, Indonesia</p>
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 812 3456 7890</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>KosMe@gmail.com</p>
@@ -15,36 +15,36 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="mb-4 text-white">Quick Links</h5>
-                <a class="btn btn-link text-white-50" href="/semuaKos">List Kos</a>
+                <h5 class="mb-4 text-white">Menu</h5>
+                <a class="btn btn-link text-white-50" href="{{ route('boarding-house.search') }}">List Kos</a>
                 <a class="btn btn-link text-white-50" href="#about">About</a>
-                <a class="btn btn-link text-white-50" href="/myBookings">My Bookings</a>
+                <a class="btn btn-link text-white-50" href="{{ route('profile.edit') }}">Profile</a>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="mb-4 text-white">Photo Gallery</h5>
+                <h5 class="mb-4 text-white">Galeri Foto</h5>
                 <div class="pt-2 row g-2">
                     <div class="col-4">
-                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-1.jpg') }}"
+                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-1.jpeg') }}"
                             alt="">
                     </div>
                     <div class="col-4">
-                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-2.jpg') }}"
+                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-2.jpeg') }}"
                             alt="">
                     </div>
                     <div class="col-4">
-                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-3.jpg') }}"
+                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-3.jpeg') }}"
                             alt="">
                     </div>
                     <div class="col-4">
-                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-4.jpg') }}"
+                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-4.png') }}"
                             alt="">
                     </div>
                     <div class="col-4">
-                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-5.jpg') }}"
+                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-5.png') }}"
                             alt="">
                     </div>
                     <div class="col-4">
-                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-6.jpg') }}"
+                        <img class="p-1 rounded img-fluid bg-light" src="{{ asset('assets/img/property-6.png') }}"
                             alt="">
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <input class="py-3 bg-transparent form-control w-100 ps-4 pe-5" type="text"
                         placeholder="Your email">
                     <button type="button"
-                        class="top-0 py-2 mt-2 btn btn-primary position-absolute end-0 me-2">SignUp</button>
+                        class="top-0 py-2 mt-2 btn btn-primary position-absolute end-0 me-2">Kirim</button>
                 </div>
             </div>
         </div>

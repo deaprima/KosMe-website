@@ -12,15 +12,34 @@
                     aman, dan sesuai budget. Tinggal cari, pilih, dan booking dengan mudah. Cocok untuk mahasiswa,
                     pekerja,
                     atau siapa pun yang butuh hunian nyaman!</p>
-                <a href="{{ route('boarding-house.search') }}" class="px-5 py-3 btn btn-primary me-3 animated fadeIn">Cari Kos Sekarang</a>
+                <a href="{{ route('boarding-house.search') }}" class="px-5 py-3 btn btn-primary me-3 animated fadeIn">Cari
+                    Kos Sekarang</a>
             </div>
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
-                    <div class="owl-carousel-item">
-                        <img class="img-fluid" src="{{ asset('assets/img/carousel-1.jpg') }}" alt="">
+                    <div class="owl-carousel-item" style="aspect-ratio: 1/1;">
+                        <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                            src="{{ asset('assets/img/property-1.jpeg') }}" alt="">
                     </div>
-                    <div class="owl-carousel-item">
-                        <img class="img-fluid" src="{{ asset('assets/img/carousel-2.jpg') }}" alt="">
+                    <div class="owl-carousel-item" style="aspect-ratio: 1/1;">
+                        <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                            src="{{ asset('assets/img/property-2.jpeg') }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item" style="aspect-ratio: 1/1;">
+                        <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                            src="{{ asset('assets/img/property-3.jpeg') }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item" style="aspect-ratio: 1/1;">
+                        <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                            src="{{ asset('assets/img/property-4.png') }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item" style="aspect-ratio: 1/1;">
+                        <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                            src="{{ asset('assets/img/property-5.png') }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item" style="aspect-ratio: 1/1;">
+                        <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                            src="{{ asset('assets/img/property-6.png') }}" alt="">
                     </div>
                 </div>
             </div>
