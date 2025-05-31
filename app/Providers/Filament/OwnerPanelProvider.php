@@ -23,6 +23,7 @@ class OwnerPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->favicon(asset('assets/logo/logo1.png'))
             ->id('owner')
             ->path('owner')
             ->brandName('DASHBOARD MITRA')
