@@ -7,21 +7,18 @@
     <title>Register - Kos Me, Choose Me!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #00B98E;
-            --primary-dark: #008C6D;
-            --primary-light: #E6F7F2;
-            --secondary-color: #6C7BFF;
-            --text-color: #333333;
-            --light-gray: #F8F9FA;
-            --border-radius: 10px;
+            --primary: #2563EB;     /* Indigo Blue */
+            --secondary: #F59E0B;   /* Soft Amber */
+            --light: #F9FAFB;       /* Snow White */
+            --dark: #1E293B;        /* Slate Gray */
         }
 
         body {
-            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
-            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--light) 0%, #E9ECEF 100%);
+            font-family: 'Heebo', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -33,7 +30,7 @@
             width: 100%;
             max-width: 700px;
             margin: 0 auto;
-            border-radius: var(--border-radius);
+            border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             background-color: #fff;
@@ -57,8 +54,9 @@
         }
 
         .register-header h2 {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            color: var(--text-color);
+            color: var(--dark);
             margin-bottom: 0.25rem;
             font-size: 1.5rem;
         }
@@ -101,8 +99,8 @@
         }
 
         .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(0, 185, 142, 0.25);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
         }
 
         .btn {
@@ -113,14 +111,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+            background: linear-gradient(to right, var(--primary), #1d4ed8);
             border: none;
         }
 
         .btn-primary:hover {
-            background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+            background: linear-gradient(to right, #1d4ed8, var(--primary));
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 185, 142, 0.3);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
 
         .btn-google {
@@ -135,7 +133,7 @@
         }
 
         .btn-google:hover {
-            background-color: #f8f9fa;
+            background-color: var(--light);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
@@ -165,7 +163,7 @@
         }
 
         .login-link {
-            color: var(--primary-color);
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
@@ -173,13 +171,13 @@
         }
 
         .login-link:hover {
-            color: var(--primary-dark);
+            color: #1d4ed8;
             text-decoration: underline;
         }
 
         .form-check-input:checked {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
 
         .form-check-label {
@@ -193,7 +191,7 @@
         }
 
         .password-toggle:hover {
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .progress {
@@ -240,12 +238,12 @@
         }
 
         .step.active .step-circle {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
         }
 
         .step.completed .step-circle {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
         }
 
@@ -257,7 +255,7 @@
         }
 
         .step.active .step-label {
-            color: var(--primary-color);
+            color: var(--primary);
             font-weight: 500;
         }
 
@@ -271,7 +269,7 @@
         }
 
         .step-connector.active {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
         }
 
         .register-form {
@@ -284,7 +282,7 @@
         }
 
         .terms-link {
-            color: var(--primary-color);
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.8rem;
@@ -369,6 +367,15 @@
                 font-size: 0.65rem;
             }
         }
+
+        /* Avatar upload styles */
+        .avatar-upload label[for="avatar"] {
+            background: linear-gradient(to right, var(--primary), #1d4ed8) !important;
+        }
+
+        .avatar-upload label[for="avatar"]:hover {
+            background: linear-gradient(to right, #1d4ed8, var(--primary)) !important;
+        }
     </style>
 </head>
 
@@ -400,7 +407,7 @@
                                             style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #e9ecef;">
                                         <label for="avatar"
                                             class="bottom-0 p-2 text-white position-absolute end-0 rounded-circle"
-                                            style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background: linear-gradient(to right, var(--primary-color), var(--primary-dark));">
+                                            style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background: linear-gradient(to right, var(--primary), var(--primary));">
                                             <i class="fas fa-camera"></i>
                                         </label>
                                     </div>
@@ -498,7 +505,7 @@
                     </div>
 
                     <p class="mt-3 text-center">Sudah punya akun? <a href="{{ route('login') }}"
-                            class="login-link">Login sekarang</a></p>
+                            class="login-link">Masuk sekarang</a></p>
                 </form>
             </div>
         </div>
