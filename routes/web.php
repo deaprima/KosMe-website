@@ -32,6 +32,7 @@ Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])
     Route::get('/boarding-houses/{boardingHouse:slug}/booking/{room}', [BoardingHouseController::class, 'payment'])->name('booking.payment');
     Route::post('/boarding-houses/{boardingHouse:slug}/booking/{room}/process', [BoardingHouseController::class, 'processPayment'])->name('booking.process');
     Route::get('/booking/{transaction}/success', [BoardingHouseController::class, 'success'])->name('booking.success');
+    Route::post('/boarding-houses/{boardingHouse}/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
 });
 
 require __DIR__ . '/auth.php';

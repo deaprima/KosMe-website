@@ -3,6 +3,12 @@
 @section('content')
     <div class="py-5 container-xxl">
         <div class="container-custom">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="row g-5">
                 <div class="col-lg-8">
                     <!-- Boarding House Images -->
@@ -103,6 +109,63 @@
                             </div>
                         </div>
                     @endif
+
+                    <!-- Add Testimonial Form -->
+                    <div class="mt-5 wow fadeInUp" data-wow-delay="0.6s">
+                        <h3 class="mb-4">Bagikan Pengalaman Anda</h3>
+                        <div class="p-4 border rounded bg-light">
+                            <form action="{{ route('testimonials.store', $boardingHouse) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="mb-3 col-md-6">
+                                        <label for="photo" class="form-label">
+                                            <i class="fa fa-camera text-primary me-2"></i>Foto
+                                        </label>
+                                        <input type="file" class="form-control @error('photo') is-invalid @enderror"
+                                            id="photo" name="photo" required>
+                                        <small class="text-muted">Format: JPG, JPEG, PNG (Max. 2MB)</small>
+                                        @error('photo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="rating" class="form-label">
+                                            <i class="fa fa-star text-primary me-2"></i>Rating
+                                        </label>
+                                        <select class="form-select @error('rating') is-invalid @enderror" id="rating"
+                                            name="rating" required>
+                                            <option value="">Pilih Rating</option>
+                                            <option value="5">⭐⭐⭐⭐⭐</option>
+                                            <option value="4">⭐⭐⭐⭐</option>
+                                            <option value="3">⭐⭐⭐</option>
+                                            <option value="2">⭐⭐</option>
+                                            <option value="1">⭐</option>
+                                        </select>
+                                        @error('rating')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="content" class="form-label">
+                                        <i class="fa fa-comment text-primary me-2"></i>Testimoni Anda
+                                    </label>
+                                    <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="4"
+                                        placeholder="Bagikan pengalaman Anda selama menginap di sini..." required></textarea>
+                                    <small class="text-muted">Minimal 10 karakter</small>
+                                    @error('content')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-paper-plane me-2"></i>Kirim Testimoni
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sidebar -->
@@ -110,7 +173,8 @@
                     <div class="wow fadeInUp" data-wow-delay="0.1s">
                         <div class="p-4 border rounded">
                             <h3 class="mb-4">Informasi Kontak</h3>
-                            <p class="mb-2"><i class="fa fa-user text-primary me-2"></i>{{ $boardingHouse->user->name }}
+                            <p class="mb-2"><i
+                                    class="fa fa-user text-primary me-2"></i>{{ $boardingHouse->user->name }}
                             </p>
                             <p class="mb-2"><i
                                     class="fa fa-phone text-primary me-2"></i>{{ $boardingHouse->user->phone_number ?? 'Tidak tersedia' }}
