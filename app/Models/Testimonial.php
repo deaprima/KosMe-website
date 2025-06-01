@@ -20,7 +20,7 @@ class Testimonial extends Model
 
     public function BoardingHouse()
     {
-        return $this->belongsTo(boardingHouse::class);
+        return $this->belongsTo(BoardingHouse::class);
     }
 }
 
