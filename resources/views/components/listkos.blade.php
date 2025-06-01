@@ -77,8 +77,8 @@
                 </div>
             </div>
         </div>
-        <div class="text-center col-12 wow fadeInUp" data-wow-delay="0.1s">
-            <a class="px-5 py-3 btn btn-primary" href="{{ route('boarding-house.search') }}">Lihat Semua</a>
+        <div class="mt-5 text-center col-12 wow fadeInUp" data-wow-delay="0.1s">
+            <a class="py-3 ppx-5 btn btn-primary" href="{{ route('boarding-house.search') }}">Lihat Semua</a>
         </div>
     </div>
 </div>
