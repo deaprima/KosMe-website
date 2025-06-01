@@ -25,19 +25,21 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 
 -   📊 Dashboard analitik untuk monitoring kos sendiri
 -   👥 Manajemen penghuni kos
--   💰 Sistem pembayaran
+-   💰 Sistem pembayaran terintegrasi
 -   📝 Pencatatan pemeliharaan dan perbaikan
 -   📈 Laporan keuangan kos
 -   🏠 Manajemen kamar dan fasilitas
+-   💳 Manajemen metode pembayaran
 
 #### 👤 User/Penghuni (http://localhost:8000)
 
 -   📱 Aplikasi mobile-friendly untuk akses mudah
--   💳 Pembayaran online yang aman
+-   💳 Pembayaran online yang aman dengan multiple payment gateway
 -   📅 Riwayat transaksi dan pembayaran
 -   🏠 Informasi kamar dan fasilitas
 -   👥 Profil dan pengaturan akun
 -   📊 Status pembayaran dan tagihan
+-   💳 Pilihan metode pembayaran yang fleksibel
 
 ### 🛠️ Teknologi yang Digunakan
 
@@ -48,6 +50,7 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
     -   Alpine.js - Library JavaScript ringan untuk interaktivitas
 -   **Database**: MySQL
 -   **Testing**: Pest PHP - Framework testing modern
+-   **Payment Gateway**: Midtrans - Payment gateway terpercaya
 
 ## ⚙️ Persyaratan Sistem
 
@@ -131,6 +134,12 @@ APP_URL=http://localhost:8000
 php artisan migrate --seed
 ```
 
+2. Buat symbolic link untuk storage:
+
+```bash
+php artisan storage:link
+```
+
 Setelah menjalankan seeder, Anda dapat login dengan kredensial berikut:
 
 #### Admin
@@ -203,6 +212,21 @@ kosme/
 ├── tests/            # File pengujian
 └── vendor/           # Dependensi PHP
 ```
+
+## 👥 Tim Pengembang
+
+### Backend Developer
+
+-   [Dea Primatama] - [23051204016]
+
+### Frontend Developer
+
+-   [Dinara Aulia Safina] - [23051204009]
+-   [Masyita Ika Sahara] - [23051204035]
+
+### UI/UX Designer
+
+-   [Yanti Aisyah] - [23051204019]
 
 ## 🆘 Dukungan
 
