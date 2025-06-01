@@ -3,6 +3,7 @@
 <div align="center">
   <h3>Platform Manajemen Kos Modern berbasis Website</h3>
   <p>Solusi Terpadu untuk Pengelolaan Kos yang Efisien</p>
+  <p>Website: <a href="https://kosme.my.id">https://kosme.my.id</a></p>
 </div>
 
 ## 📋 Tentang KosMe
@@ -11,7 +12,7 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 
 ### ✨ Fitur Utama
 
-#### 👨‍💼 Admin (http://localhost:8000/admin)
+#### 👨‍💼 Admin (https://kosme.my.id/admin)
 
 -   📊 Dashboard analitik untuk monitoring seluruh kos
 -   👥 Manajemen User
@@ -21,7 +22,7 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 -   📝 Verifikasi kos dan pemilik
 -   📊 Statistik dan analitik platform
 
-#### 👨‍💻 Owner (http://localhost:8000/owner)
+#### 👨‍💻 Owner (https://kosme.my.id/owner)
 
 -   📊 Dashboard analitik untuk monitoring kos sendiri
 -   👥 Manajemen penghuni kos
@@ -31,7 +32,7 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 -   🏠 Manajemen kamar dan fasilitas
 -   💳 Manajemen metode pembayaran
 
-#### 👤 User/Penghuni (http://localhost:8000)
+#### 👤 User/Penghuni (https://kosme.my.id)
 
 -   📱 Aplikasi mobile-friendly untuk akses mudah
 -   💳 Pembayaran online yang aman dengan multiple payment gateway
@@ -146,7 +147,7 @@ Setelah menjalankan seeder, Anda dapat login dengan kredensial berikut:
 
 -   Email: admin@example.com
 -   Password: password
--   URL: http://localhost:8000/admin
+-   URL: https://kosme.my.id/admin
 
 ### 5️⃣ Menjalankan Aplikasi
 
@@ -188,8 +189,8 @@ php artisan serve
 
 Akses aplikasi:
 
--   Panel Admin: http://localhost:8000/admin
--   Aplikasi: http://localhost:8000
+-   Panel Admin: https://kosme.my.id/admin
+-   Aplikasi: https://kosme.my.id
 
 ## 💻 Pengembangan
 

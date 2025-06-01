@@ -40,7 +40,7 @@
                                                 <td>
                                                     @if ($transaction->payment_status === 'pending')
                                                         <span class="badge bg-warning">Menunggu Pembayaran</span>
-                                                    @elseif($transaction->payment_status === 'success')
+                                                    @elseif($transaction->payment_status === 'paid')
                                                         <span class="badge bg-success">Lunas</span>
                                                     @else
                                                         <span class="badge bg-danger">Gagal</span>
