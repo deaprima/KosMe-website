@@ -4,7 +4,7 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                 <div class="p-5 overflow-hidden about-img position-relative pe-0">
-                    <img class="img-fluid w-100" src="{{ asset('assets/img/property-5.png') }}">
+                    <img class="img-fluid w-100" src="{{ asset('assets/img/about.png') }}">
                 </div>
             </div>
             <div class="p-5 col-lg-6 wow fadeIn" data-wow-delay="0.5s">

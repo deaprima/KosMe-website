@@ -32,7 +32,7 @@
                         class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Beranda</a>
                     <a href="{{ route('boarding-house.search') }}" class="nav-item nav-link">Cari Kos</a>
                     <a href="#about" class="nav-item nav-link">Tentang</a>
-                    {{-- @auth
+                    @auth
                         <div class="nav-item dropdown d-lg-none">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                 <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}"
@@ -62,7 +62,7 @@
                     @else
                         <a href="{{ route('login') }}"
                             class="nav-item nav-link btn btn-success square-btn d-lg-none">Masuk</a>
-                    @endauth --}}
+                    @endauth
                 </div>
                 @auth
                     <div class="dropdown d-none d-lg-block">

@@ -526,3 +526,67 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
     outline: 0;
 }
+
+/* Custom Dropdown Styles */
+.dropdown-menu {
+    min-width: 280px !important;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+}
+
+/* Desktop Dropdown Styles */
+@media (min-width: 992px) {
+    .dropdown-menu {
+        min-width: 320px !important;
+        padding: 0.75rem 0;
+    }
+
+    .dropdown-menu .dropdown-item {
+        padding: 1rem 1.75rem;
+        font-size: 1rem;
+    }
+
+    .dropdown-menu .px-3 {
+        padding: 1.25rem 1.75rem !important;
+    }
+
+    .dropdown-menu .px-3 p {
+        font-size: 1.1rem;
+    }
+
+    .dropdown-menu .px-3 small {
+        font-size: 0.95rem;
+    }
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu .dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-menu .dropdown-divider {
+    margin: 0.5rem 0;
+    border-color: #f3f4f6;
+}
+
+.dropdown-menu .px-3 {
+    padding: 1rem 1.5rem !important;
+}
+
+.dropdown-menu .px-3 p {
+    font-size: 1rem;
+    margin-bottom: 0.25rem !important;
+}
+
+.dropdown-menu .px-3 small {
+    font-size: 0.875rem;
+}
