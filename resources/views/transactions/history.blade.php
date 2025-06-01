@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container py-5" style="min-height: calc(100vh - 400px);">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header bg-white">
+                    <div class="bg-white card-header">
                         <h4 class="mb-0">Riwayat Transaksi</h4>
                     </div>
                     <div class="card-body">
                         @if ($transactions->isEmpty())
-                            <div class="text-center py-5">
-                                <i class="fas fa-history fa-3x text-muted mb-3"></i>
+                            <div class="py-5 text-center">
+                                <i class="mb-3 fas fa-history fa-3x text-muted"></i>
                                 <p class="text-muted">Belum ada riwayat transaksi</p>
                             </div>
                         @else
@@ -40,7 +40,7 @@
                                                 <td>
                                                     @if ($transaction->payment_status === 'pending')
                                                         <span class="badge bg-warning">Menunggu Pembayaran</span>
-                                                    @elseif($transaction->payment_status === 'paid')
+                                                    @elseif($transaction->payment_status === 'success')
                                                         <span class="badge bg-success">Lunas</span>
                                                     @else
                                                         <span class="badge bg-danger">Gagal</span>
@@ -51,7 +51,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="d-flex justify-content-center mt-4">
+                            <div class="mt-4 d-flex justify-content-center">
                                 {{ $transactions->links() }}
                             </div>
                         @endif

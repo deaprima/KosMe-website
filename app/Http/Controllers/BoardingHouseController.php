@@ -104,7 +104,7 @@ class BoardingHouseController extends Controller
             'room_id' => $room->id,
             'user_id' => auth()->id(),
             'payment_method' => $request->payment_method,
-            'payment_status' => 'pending',
+            'payment_status' => 'paid',
             'start_date' => $request->start_date,
             'duration' => $request->duration,
             'total_amount' => $totalAmount,

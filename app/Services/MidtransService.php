@@ -66,7 +66,7 @@ class MidtransService
 
         if ($transactionStatus == 'capture') {
             if ($fraudStatus == 'challenge') {
-                $transaction->payment_status = 'challenge';
+                $transaction->payment_status = 'pending';
             } else if ($fraudStatus == 'accept') {
                 $transaction->payment_status = 'paid';
             }
