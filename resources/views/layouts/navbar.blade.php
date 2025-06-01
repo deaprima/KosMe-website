@@ -31,7 +31,8 @@
                     <a href="{{ route('home') }}"
                         class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Beranda</a>
                     <a href="{{ route('boarding-house.search') }}" class="nav-item nav-link">Cari Kos</a>
-                    <a href="#about" class="nav-item nav-link">Tentang</a>
+                    <a href="{{ Request::is('/') ? '#about' : route('home') . '#about' }}"
+                        class="nav-item nav-link">Tentang</a>
                     @auth
                         <div class="nav-item dropdown d-lg-none">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -67,8 +68,8 @@
                 @auth
                     <div class="dropdown d-none d-lg-block">
                         <button class="p-0 border-0 btn" type="button" data-bs-toggle="dropdown">
-                            <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle"
-                                style="width: 40px; height: 40px; object-fit: cover;">
+                            <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}"
+                                class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <div class="px-3 py-2">
