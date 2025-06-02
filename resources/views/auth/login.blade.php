@@ -7,7 +7,7 @@
     <title>Login - Kos Me, Choose Me!</title>
     <!-- Favicon -->
     <link href="{{ asset('assets/logo/logo1.png') }}" rel="icon">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -380,7 +380,10 @@
         <div class="login-container">
             <div class="login-form-container col-lg-6">
                 <div class="login-header">
-                    <img src="{{ asset('assets/logo/logo3.png') }}" alt="Logo" style="height: 80px; width: auto; padding-bottom:15px" class="logo">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/logo/logo3.png') }}" alt="Logo"
+                            style="height: 80px; width: auto; padding-bottom:15px" class="logo">
+                    </a>
                     <h2>Selamat Datang Kembali!</h2>
                     <p class="mb-0">Silakan login untuk mengakses akun Anda</p>
                 </div>

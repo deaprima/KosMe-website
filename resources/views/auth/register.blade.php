@@ -394,8 +394,10 @@
         <div class="register-container">
             <div class="register-form-container">
                 <div class="register-header">
-                    <img src="{{ asset('assets/logo/logo3.png') }}" alt="Logo"
-                        style="height: 80px; width: auto; padding-bottom:15px" class="logo">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/logo/logo3.png') }}" alt="Logo"
+                            style="height: 80px; width: auto; padding-bottom:15px" class="logo">
+                    </a>
                     <h2>Daftar Akun Baru</h2>
                     <p class="mb-4">Lengkapi data diri Anda untuk membuat akun</p>
                 </div>
