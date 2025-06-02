@@ -44,7 +44,7 @@
             <form action="{{ route('boarding-house.search') }}" method="GET">
                 <div class="row g-2">
                     <div class="col-md-3">
-                        <input type="text" name="search" class="py-3 form-select" placeholder="Cari kos..."
+                        <input type="text" name="search" class="py-3 form-control" placeholder="Cari kos..."
                             value="{{ request('search') }}">
                     </div>
                     <div class="col-md-3">
