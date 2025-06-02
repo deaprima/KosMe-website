@@ -90,7 +90,7 @@
                                         <div class="p-4 border rounded">
                                             <div class="mb-3 d-flex align-items-center">
                                                 <img src="{{ asset('storage/' . $testimonial->photo) }}"
-                                                    alt="{{ $testimonial->name }}" class="rounded-circle me-3"
+                                                    alt="{{ $testimonial->name }}" class="me-3"
                                                     style="width: 50px; height: 50px; object-fit: cover;">
                                                 <div>
                                                     <h5 class="mb-1">{{ $testimonial->name }}</h5>

@@ -19,7 +19,7 @@
                         <p class="mb-4 text-muted" style="font-style: italic;">"{{ $testimonial->content }}"</p>
                         <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 position-relative">
-                                <img class="border-2  rounded-circle img-fluid border-primary"
+                                <img class="border-2 img-fluid border-primary"
                                     src="{{ asset('storage/' . $testimonial->photo) }}"
                                     style="width: 50px; height: 50px; object-fit: cover;">
                             </div>
