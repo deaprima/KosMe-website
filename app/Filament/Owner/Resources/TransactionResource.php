@@ -19,6 +19,14 @@ class TransactionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('boardingHouse', function ($query) {
+                $query->where('user_id', auth()->guard('web')->id());
+            });
+    }
+
     public static function form(Form $form): Form
     {
         return $form
