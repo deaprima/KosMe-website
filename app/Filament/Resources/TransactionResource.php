@@ -28,7 +28,7 @@ class TransactionResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true),
                 Forms\Components\Select::make('boarding_house_id')
-                    ->relationship('boardingHouse', 'name')
+                    ->relationship('BoardingHouse', 'name')
                     ->required()
                     ->live()
                     ->afterStateUpdated(fn(Forms\Set $set) => $set('room_id', null)),
