@@ -23,15 +23,18 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 $user = Auth::user();
 
+                // Membersihkan data session sebelumnya
+                session()->forget(['url.intended', 'previous_url']);
+
                 if ($user->role === 'admin') {
-                    return redirect('/admin');
+                    return redirect()->intended('/admin');
                 }
 
                 if ($user->role === 'owner') {
-                    return redirect('/owner');
+                    return redirect()->intended('/owner');
                 }
 
-                return redirect(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
         }
 

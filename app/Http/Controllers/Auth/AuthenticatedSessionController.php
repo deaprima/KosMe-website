@@ -29,6 +29,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Membersihkan session
+        $request->session()->forget(['url.intended', 'previous_url']);
+
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->intended('/admin');
+        }
+
+        if ($user->role === 'owner') {
+            return redirect()->intended('/owner');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
