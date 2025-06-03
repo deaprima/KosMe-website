@@ -12,7 +12,7 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 
 ### ✨ Fitur Utama
 
-#### 👨‍💼 Admin (https://kosme.my.id/admin)
+#### 👨‍💼 Admin 
 
 -   📊 Dashboard analitik untuk monitoring seluruh kos
 -   👥 Manajemen User
@@ -20,9 +20,8 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 -   ⚙️ Konfigurasi sistem
 -   🔐 Manajemen role dan permission
 -   📝 Verifikasi kos dan pemilik
--   📊 Statistik dan analitik platform
 
-#### 👨‍💻 Owner (https://kosme.my.id/owner)
+#### 👨‍💻 Owner 
 
 -   📊 Dashboard analitik untuk monitoring kos sendiri
 -   👥 Manajemen penghuni kos
@@ -32,10 +31,10 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 -   🏠 Manajemen kamar dan fasilitas
 -   💳 Manajemen metode pembayaran
 
-#### 👤 User/Penghuni (https://kosme.my.id)
+#### 👤 User/Penghuni
 
 -   📱 Aplikasi mobile-friendly untuk akses mudah
--   💳 Pembayaran online yang aman dengan multiple payment gateway
+-   💳 Pembayaran online yang aman dengan payment gateway
 -   📅 Riwayat transaksi dan pembayaran
 -   🏠 Informasi kamar dan fasilitas
 -   👥 Profil dan pengaturan akun
@@ -45,12 +44,12 @@ KosMe adalah platform manajemen kos modern yang dirancang untuk memudahkan penge
 ### 🛠️ Teknologi yang Digunakan
 
 -   **Backend**: Laravel 12 - Framework PHP modern untuk performa tinggi
+-   **Authentikasi**: Laravel Breeze - Simple Auth dari Laravel
 -   **Admin Panel**: Filament 3 - Panel admin yang elegan dan mudah digunakan
 -   **Frontend**:
     -   Tailwind CSS - Framework CSS modern untuk desain responsif
     -   Alpine.js - Library JavaScript ringan untuk interaktivitas
 -   **Database**: MySQL
--   **Testing**: Pest PHP - Framework testing modern
 -   **Payment Gateway**: Midtrans - Payment gateway terpercaya
 
 ## ⚙️ Persyaratan Sistem
@@ -190,6 +189,7 @@ php artisan serve
 Akses aplikasi:
 
 -   Panel Admin: https://kosme.my.id/admin
+-   Panel Owner: https://kosme.my.id/owner
 -   Aplikasi: https://kosme.my.id
 
 ## 💻 Pengembangan
