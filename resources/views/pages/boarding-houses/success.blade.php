@@ -6,7 +6,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="p-4 border rounded text-center">
+                        <div class="p-4 text-center border rounded">
                             <div class="mb-4">
                                 <i class="fa fa-check-circle text-success" style="font-size: 64px;"></i>
                             </div>
@@ -14,7 +14,7 @@
                             <p class="mb-4">Terima kasih telah melakukan pemesanan. Berikut adalah detail pemesanan Anda:
                             </p>
 
-                            <div class="border rounded p-4 mb-4">
+                            <div class="p-4 mb-4 border rounded">
                                 <div class="row">
                                     <div class="col-md-6 text-start">
                                         <p class="mb-2"><strong>Kode Transaksi:</strong></p>
@@ -38,11 +38,6 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="alert alert-info">
-                                <p class="mb-0">Silakan lakukan pembayaran sesuai dengan instruksi yang akan dikirimkan
-                                    melalui email.</p>
                             </div>
 
                             <div class="mt-4">
