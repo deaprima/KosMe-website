@@ -6,20 +6,6 @@ use App\Http\Controllers\BoardingHouseController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\MidtransController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-
-// Routes protected from admin/owner access
-Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('/check-email', function (Request $request) {
-    $email = $request->query('email');
-    $exists = \App\Models\User::where('email', $email)->exists();
-    return response()->json(['exists' => $exists]);
-})->name('check-email');
 
 // Public routes protected from admin/owner access
 Route::middleware([\App\Http\Middleware\PreventAdminOwnerAccess::class])->group(function () {
@@ -35,6 +21,10 @@ Route::middleware(['auth', \App\Http\Middleware\PreventAdminOwnerAccess::class])
     Route::get('/booking/{transaction}/success', [BoardingHouseController::class, 'success'])->name('booking.success');
     Route::post('/boarding-houses/{boardingHouse}/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
     Route::get('/transactions/history', [App\Http\Controllers\TransactionController::class, 'history'])->name('transactions.history');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // Midtrans callback route (no auth required)
