@@ -214,21 +214,6 @@ kosme/
 └── vendor/           # Dependensi PHP
 ```
 
-## 👥 Tim Pengembang
-
-### Backend Developer
-
--   [Dea Primatama] - [23051204016]
-
-### Frontend Developer
-
--   [Dinara Aulia Safina] - [23051204009]
--   [Masyita Ika Sahara] - [23051204035]
-
-### UI/UX Designer
-
--   [Yanti Aisyah] - [23051204019]
-
 ## 🆘 Dukungan
 
 Untuk bantuan dan dukungan, silakan:
